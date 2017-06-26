@@ -1,0 +1,37 @@
+<v-layout>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 chat">
+        <ul v-if="chatMessages.length">
+          <li v-for="message in chatMessages">
+            <v-chat-message-builder :message="message" />
+          </li>
+        </ul>
+        <div v-else>
+          Messages not found
+        </div>
+      </div>
+      <div class="col-md-6 players">
+        <ul>
+          <li v-for="player in players">
+            <span class="player" :class="[player.isActive ? 'activePlayer' : '', player.color ]">{{player.name}}</span>
+            <span v-if="player.isActive"> - Active</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 game-board">
+        <v-game-board-builder :board="gameBoard" :players="players" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+
+        <button @click="rollDice" type="button" class="btn btn-success btn-block btn-lg">
+     Roll Dice
+    </button>
+      </div>
+    </div>
+  </div>
+</v-layout>

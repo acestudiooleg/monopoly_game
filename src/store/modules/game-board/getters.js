@@ -6,7 +6,10 @@
  * account module.
  */
 
-// import { find } from 'lodash/fp';
+import fp from 'lodash/fp';
 
 export default {
+  boardPositionByCurrentPlayer: ({ list }, g, rs, rg) =>
+     fp.find({ position: fp.get('players/currentPlayer.position')(rg) })(list)
+
 };

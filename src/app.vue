@@ -10,7 +10,6 @@
    *
    * The entry point of the application
    */
-   console.log('he');
 
   import store from './store';
   import { router, i18n } from './bootstrap';
