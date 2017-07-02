@@ -33,11 +33,18 @@ module.exports = {
     'comma-dangle': 0,
     'arrow-body-style': 0,
     'no-plusplus': 0,
+    'no-unused-vars': 1,
+    'spaced-comment': 1,
+    'object-curly-spacing': 0,
+    'arrow-parens': 0,
+
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       'js': 'never',
       'vue': 'never'
     }],
+    'no-shadow': 0,
+    'import/no-named-as-default-member': 0,
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
       'optionalDependencies': ['test/unit/index.js']

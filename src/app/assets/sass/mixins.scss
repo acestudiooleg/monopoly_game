@@ -1,0 +1,117 @@
+  @mixin cardLinePosition ($side, $color: 'empty') {
+    $deg: 0deg;
+    .cardName {
+      display: block;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      @if $side==top or $side==bottom {
+        line-height: inherit;
+        bottom: 0;
+        $deg: 0deg;
+      }
+      @if $side==right {
+        width: 85px;
+        height: 78px;
+        left: 114px;
+        bottom: 3px;
+        $deg: -90deg;
+      }
+      @else if $side==left {
+        width: 50px;
+        height: 47px;
+        left: 0px;
+        top: 16px;
+        $deg: 90deg;
+      }
+      display: block;
+      transform: rotate($deg);
+    }
+    .cardLineColor {
+      $weight: 30px;
+      display: block;
+      position: absolute;
+      @if $side==top or $side==bottom {
+        line-height: inherit;
+        height: $weight;
+        width: $short;
+        top: 0;
+        $deg: 0deg;
+      }
+      @if $side==right {
+        width: $weight;
+        height: $short;
+        left: 0;
+        top: 0;
+      }
+      @else if $side==left {
+        width: $weight;
+        height: $short;
+        right: 0;
+        top: 0;
+      }
+      .price {
+        line-height: inherit;
+        width: 85px;
+        height: 78px;
+        display: block;
+        position: absolute;
+        @if $side==top or $side==bottom {
+          top: 5px;
+          $deg: 0deg;
+        }
+        @if $side==right {
+          top: 3px;
+          left: 0;
+          $deg: -90deg;
+        }
+        @else if $side==left {
+          right: 0;
+          bottom: 0;
+          $deg: 90deg;
+        }
+        transform: rotate($deg);
+      }
+      @if $color not 'empty' {
+        background: $color;
+      }
+    }
+  }
+
+  @mixin setPlayersPosition($players) {
+    $offset: $long - 10px;
+    @for $i from 1 to $players + 1 {
+      $offset: $offset / 2;
+    }
+    @if $players==1 {
+      $offset: $offset - 5px;
+    }
+    @for $i from 1 to $players + 1 {
+      .players-num-#{$players} {
+        .player-#{$i} {
+          left: $short - ($playerTokenSize / 2);
+          top: ($i * ($offset + $playerTokenSize)) - $playerTokenSize;
+        }
+      }
+    }
+  }
+
+  @mixin cardImages ($img, $left, $top, $isRevers: '') {
+    .#{$img}-img {
+      background-image: url("#{$path}/#{$img}.png");
+      background-repeat: no-repeat;
+      width: 90px;
+      height: 90px;
+      position: absolute;
+      z-index: -1;
+      @if $isRevers=='revers' {
+        transform: rotate(180deg);
+        right: $left;
+        bottom: $top;
+      }
+      @else {
+        top: $top;
+        left: $left;
+      }
+    }
+  }

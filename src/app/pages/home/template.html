@@ -1,0 +1,180 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9 leftSide">
+            <div class="gameBoard">
+                <div class="topSide">
+                    <div v-for="(card, index) in topCards" :class="[card.class]" class="col players-num-4">
+                        <!--  <div v-if="index == 0" class="player-1 playerToken red-token"></div>
+                        <div v-if="index == 0" class="player-2 playerToken green-token"></div>
+                        <div v-if="index == 0" class="player-3 playerToken blue-token"></div>
+                        <div v-if="index == 0" class="player-4 playerToken yellow-token"></div> -->
+                        <span v-for="(img, i) in card.images" :class="[img+'-img']"></span>
+                        <span v-if="card.price" class="cardLineColor">
+                          <span class="price">{{card.price}} G</span>
+                        </span>
+                        <span class="cardName">{{card.name}}</span>
+                    </div>
+                </div>
+                <div class="ro">
+                    <div class="leftSide">
+                        <div v-for="(card, index) in leftCards" :class="[card.class]" class="col players-num-4">
+                            <!-- <div v-if="index == 0" class="player-1 playerToken red-token"></div>
+                            <div v-if="index == 0" class="player-2 playerToken green-token"></div>
+                            <div v-if="index == 0" class="player-3 playerToken blue-token"></div>
+                            <div v-if="index == 0" class="player-4 playerToken yellow-token"></div> -->
+                            <span v-for="(img, i) in card.images" :class="[img+'-img']"></span>
+                            <span v-if="card.price" class="cardLineColor">
+                              <span class="price">{{card.price}} G</span>
+                            </span>
+                            <span class="cardName">{{card.name}}</span>
+                        </div>
+                    </div>
+                    <div class="centralSide">
+                        CENTER
+                    </div>
+                    <div class="rightSide">
+                        <div v-for="(card, index) in rightCards" :class="[card.class]" class="col players-num-4">
+                            <!-- <div v-if="index == 0" class="player-1 playerToken red-token"></div>
+                            <div v-if="index == 0" class="player-2 playerToken green-token"></div>
+                            <div v-if="index == 0" class="player-3 playerToken blue-token"></div>
+                            <div v-if="index == 0" class="player-4 playerToken yellow-token"></div> -->
+                            <span v-for="(img, i) in card.images" :class="[img+'-img']"></span>
+                            <span v-if="card.price" class="cardLineColor">
+                              <span class="price">{{card.price}} G</span>
+                            </span>
+                            <span class="cardName">{{card.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottomSide">
+                    <div v-for="(card, index) in bottomCards" :class="[card.class]" class="col players-num-4">
+                        <!--  <div v-if="index == 0" class="player-1 playerToken red-token"></div>
+                        <div v-if="index == 0" class="player-2 playerToken green-token"></div>
+                        <div v-if="index == 0" class="player-3 playerToken blue-token"></div>
+                        <div v-if="index == 0" class="player-4 playerToken yellow-token"></div> -->
+                        <span v-for="(img, i) in card.images" :class="[img+'-img']"></span>
+                        <span v-if="card.price" class="cardLineColor">
+                          <span class="price">{{card.price}} G</span>
+                        </span>
+                         <span class="cardName">{{card.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 rightSide">
+            <div class="players">
+                <div class="playerCard">
+                    <div class="container-fluid red-player">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="photo">Alex</div>
+                            </div>
+                            <div class="com-md-9">
+                                <div class="info">
+                                    <div class="playerName">Alex</div>
+                                    <div class="wallet">Wallet: $300</div>
+                                    <div class="capital">Capital: $1200</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="playerTime">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width: 60%;">
+                                            40 sec
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="players">
+                <div class="playerCard">
+                    <div class="container-fluid green-player">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="photo">Genry</div>
+                            </div>
+                            <div class="com-md-9">
+                                <div class="info">
+                                    <div class="playerName">Genry</div>
+                                    <div class="wallet">Wallet: $200</div>
+                                    <div class="capital">Capital: $1200</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="playerTime">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="players">
+                <div class="playerCard">
+                    <div class="container-fluid blue-player">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="photo">Miha</div>
+                            </div>
+                            <div class="com-md-9">
+                                <div class="info">
+                                    <div class="playerName">Miha</div>
+                                    <div class="wallet">Wallet: $700</div>
+                                    <div class="capital">Capital: $1200</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="playerTime">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="players">
+                <div class="playerCard">
+                    <div class="container-fluid yellow-player">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="photo">Roma</div>
+                            </div>
+                            <div class="com-md-9">
+                                <div class="info">
+                                    <div class="playerName">Roma</div>
+                                    <div class="wallet">Wallet: $300</div>
+                                    <div class="capital">Capital: $1200</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="playerTime">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
