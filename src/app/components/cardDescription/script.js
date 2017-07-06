@@ -4,6 +4,8 @@
  * https://vuejs.org/v2/guide/components.html
  */
 
+//
+
 const card = {
   title: 'Трансфигурация сегодня',
   description: 'серьёзный научный журнал о современном положении дел в трансфигурации, содержащий разного рода статьи об этой магической дисциплине и обсуждения различного рода проблем и тенденций.',
@@ -11,9 +13,9 @@ const card = {
 
   price: {
     start: 150,
-    morgage: 75,
-    buyout: 165,
-    share: 125
+    morgage: 75, // start/2
+    buyout: 150, // start
+    share: 100 // start/3 * 4
   },
   income: {
     base: 5,
