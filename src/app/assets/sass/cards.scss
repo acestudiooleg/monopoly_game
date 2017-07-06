@@ -1,0 +1,187 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.start {
+  @include cardLinePosition(top, $colorNewspapers);
+  @include cardImages (start, 40px, 40px);
+}
+
+.pridira {
+  @include cardImages (pridira, 17px, 68px);
+  @include cardLinePosition(top, $colorNewspapers);
+}
+
+.today {
+  @include cardLinePosition(top, $colorNewspapers);
+  @include cardImages (today, 26px, 64px);
+}
+
+.hat {
+  @include cardLinePosition(top, $colorNewspapers);
+  @include cardImages (hat, 10px, 50px);
+}
+
+.dayly_prophet {
+  @include cardLinePosition(top, $colorNewspapers);
+  @include cardImages (dayly_prophet, 13px, 77px);
+}
+
+
+.add_money_v {
+  @include cardLinePosition(top, $colorNewspapers);
+  @include cardImages (add_money_v, 13px, 32px);
+}
+
+.grifindor {
+  @include cardLinePosition(top, 'empty', true);
+  @include cardImages (grifindor, 13px, 49px);
+}
+
+.wizzard {
+  @include cardLinePosition(top, $colorNewspapers);
+  @include cardImages (wizzard, 19px, 27px);
+}
+
+.vredilki {
+  @include cardLinePosition(top, $colorShops);
+  @include cardImages (vredilki, 15px, 56px);
+}
+
+
+.give_money_v {
+  @include cardLinePosition(top, $colorNewspapers);
+  @include cardImages (give_money_v, 13px, 33px);
+}
+
+.zonko {
+  @include cardLinePosition(top, $colorShops);
+  @include cardImages (zonko, 30px, 62px);
+}
+
+.gorben {
+  @include cardLinePosition(top, $colorShops);
+  @include cardImages (gorben, 23px, 63px);
+}
+
+.azkaban {
+  @include cardLinePosition(top, $colorShops);
+  @include cardImages (azkaban, 22px, 119px);
+  @include cardImages (dementor, 56px, 16px);
+}
+
+.kingcross {
+  @include cardLinePosition(left, $colorTransport);
+  @include cardImages (kingcross, 63px, 16px);
+}
+
+.give_money_h {
+  @include cardLinePosition(left, $colorNewspapers);
+  @include cardImages (give_money_h, 40px, 14px);
+}
+
+
+.magic_departament {
+  @include cardLinePosition(right, $colorMinistryMagic);
+  @include cardImages (magic_departament, 66px, 18px);
+}
+.add_money_h {
+  @include cardLinePosition(right, $colorNewspapers);
+  @include cardImages (add_money_h, 28px, 13px);
+}
+
+.transgressia {
+  @include cardLinePosition(left, $colorTransport);
+  @include cardImages (transgressia, 52px, 27px);
+}
+
+.secret_departament {
+  @include cardLinePosition(right, $colorMinistryMagic);
+  @include cardImages (secret_departament, 76px, 22px);
+}
+
+.pufenduy {
+  @include cardLinePosition(left, 'empty', true);
+  @include cardImages (pufenduy, 51px, 13px);
+}
+
+.kogtevran {
+  @include cardLinePosition(right, 'empty', true);
+  @include cardImages (kogtevran, 51px, 17px);
+}
+
+.invisibleCoat {
+  @include cardLinePosition(left, $colorDeath);
+  @include cardImages (invisibleCoat, 60px, 28px);
+}
+
+.square_grimm {
+  @include cardLinePosition(right, $colorPlaces);
+  @include cardImages (square_grimm, 50px, 21px);
+}
+
+.stick {
+  @include cardLinePosition(left, $colorDeath);
+  @include cardImages (stick, 63px, 28px);
+}
+
+.kosoy_pereulok {
+  @include cardLinePosition(right, $colorPlaces);
+  @include cardImages (kosoy_pereulok, 56px, 17px);
+}
+
+.hagrid-square {
+  @include cardLinePosition(bottom);
+  @include cardImages (hagrid, 28px, 40px);
+  @include cardImages (revers, 109px, 17px);
+  .revers-img {
+    left: 107px;
+    top: inherit;
+    bottom: 105px;
+    transform: rotate(-90deg);
+  }
+}
+
+.sharmbautton {
+  @include cardLinePosition(bottom, $colorSchools);
+  @include cardImages (sharmbautton, 20px, 65px);
+}
+
+.hogvards {
+  @include cardLinePosition(bottom, $colorSchools);
+  @include cardImages (hogvards, 11px, 63px);
+}
+
+.durmstrang {
+  @include cardLinePosition(bottom, $colorSchools);
+  @include cardImages (durmstrang, 20px, 65px);
+}
+
+.slizaren {
+  @include cardLinePosition(bottom, 'empty', true);
+  @include cardImages (slizaren, 13px, 45px);
+}
+
+.revers {
+  @include cardLinePosition(bottom);
+  @include cardImages (revers, 22px, 62px);
+}
+
+.goblet_fire {
+  @include cardLinePosition(bottom, $colorArtefacts);
+  @include cardImages (goblet_fire, 19px, 60px);
+}
+
+.sword {
+  @include cardLinePosition(bottom, $colorArtefacts);
+  @include cardImages (sword, 30px, 53px);
+}
+
+.stone {
+  @include cardLinePosition(bottom, $colorArtefacts);
+  @include cardImages (stone, 19px, 68px);
+}
+
+.quidich {
+  @include cardLinePosition(bottom);
+  @include cardImages (quidich, 44px, 25px);
+}

@@ -5,6 +5,7 @@
 
 
 const start = {
+  isHideName: true,
   name: 'Старт',
   class: 'start',
   images: ['start'],
@@ -59,7 +60,7 @@ const grifindor = {
   price: 500
 };
 const wizzard = {
-  name: 'Заклинание',
+  name: 'Закли нание',
   class: 'wizzard',
   images: ['wizzard'],
   service: true
@@ -73,13 +74,13 @@ const damage = {
   price: 300
 };
 const moneyMinusV = {
-  name: 'Потеря денег',
+  name: 'Ущерб',
   class: 'give_money_v',
   images: ['give_money_v'],
   service: true
 };
 const moneyMinusH = {
-  name: 'Потеря денег',
+  name: 'Ущерб',
   class: 'give_money_h',
   images: ['give_money_h'],
   service: true
@@ -103,6 +104,7 @@ const gorbin = {
 };
 
 const azkaban = {
+  isHideName: true,
   name: 'Азкабан',
   class: 'azkaban',
   images: ['dementor', 'azkaban'],
@@ -110,7 +112,7 @@ const azkaban = {
 };
 
 const kingCross = {
-  name: 'Кингс-кросс',
+  name: 'Кингс кросс',
   class: 'kingcross',
   stars: 1,
   images: ['kingcross'],
@@ -126,7 +128,7 @@ const magicDepartament = {
 };
 
 const transgressia = {
-  name: 'Трансгрессия',
+  name: 'Транс грессия',
   class: 'transgressia',
   stars: 1,
   images: ['transgressia'],
@@ -189,6 +191,7 @@ const kosoy = {
 };
 
 const hagrid = {
+  isHideName: true,
   name: 'Хагрид',
   class: 'hagrid-square',
   images: ['revers', 'hagrid'],
@@ -196,7 +199,7 @@ const hagrid = {
 };
 
 const sharmbatton = {
-  name: 'Шармбаттон',
+  name: 'Шарм баттон',
   class: 'sharmbautton',
   stars: 1,
   images: ['sharmbautton'],
@@ -212,7 +215,7 @@ const hogvarts = {
 };
 
 const durmstrang = {
-  name: 'Дурмстранг',
+  name: 'Дурм странг',
   class: 'durmstrang',
   stars: 1,
   images: ['durmstrang'],
@@ -236,7 +239,7 @@ const revers = {
 };
 
 const gobletFire = {
-  name: 'Кубое огня',
+  name: 'Кубок огня',
   class: 'goblet_fire',
   stars: 1,
   images: ['goblet_fire'],
@@ -244,7 +247,7 @@ const gobletFire = {
 };
 
 const sword = {
-  name: 'Меч грифиндора',
+  name: 'Меч грифинд.',
   class: 'sword',
   stars: 1,
   images: ['sword'],
@@ -252,7 +255,7 @@ const sword = {
 };
 
 const stone = {
-  name: 'Философский камень',
+  name: 'Философ. камень',
   class: 'stone',
   stars: 1,
   images: ['stone'],

@@ -1,0 +1,45 @@
+@import './variables.scss';
+//background: url("#{$path}/bg.png");
+.cardDesciption {
+  display: none;
+  text-align: left;
+  position: absolute;
+  font-size: 14px;
+  width: 40%;
+  height: 40%;
+  top: 156px;
+  left: 221px;
+  background: url("#{$path}/bg.png");
+  border: 1px solid black;
+  z-index: 15;
+  .logo {
+    position: relative;
+    @include cardImages (dementor, 5px, 20px);
+  }
+  .description {
+    text-align: justify;
+    margin-top: 15px;
+    margin-right: 20px;
+    line-height: 1.3;
+    .title {
+      font-weight: bold;
+    }
+  }
+  .prices {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px
+  }
+  .pricebox, .profitbox {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    td:first-child {
+      width: 150px
+    }
+    .title {
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import './variables.scss';
+@import './mixins.scss';
+.chatContainer {
+  $offset: 15px;
+  margin-top: ($centerHeight - $chatHeight)/2;
+  margin-left: ($centerHeight - $chatHeight)/2;
+  width: $chatWidth;
+  height: $chatHeight;
+  padding: $offset;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
+  .messages {
+    border: 1px solid black;
+    width: 100%;
+    height: $chatHeight - ($offset*5);
+    padding: $offset/2;
+    p {
+      text-align: left;
+      text-shadow: 1px 1px 1px black;
+      .player {
+        font-weight: bold;
+      }
+      .message {
+        color: #d2b991;
+      }
+    }
+  }
+  .inputMessage {
+    border: 1px solid black;
+    width: 100%;
+    margin-top: $offset;
+    height: $offset*2;
+    input {
+      &:focus {
+        outline: none;
+      }
+      &::placeholder {
+        text-shadow: 1px 1px 1px black;
+        color: red;
+      }
+      width: 100%;
+      height: $offset*2;
+      color: green;
+      background: transparent;
+      text-shadow: 1px 1px 1px black;
+      padding-left: $offset/2;
+      border: 0;
+    }
+  }
+}

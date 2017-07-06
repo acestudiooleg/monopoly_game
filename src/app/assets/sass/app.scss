@@ -2,18 +2,71 @@
 @import './gameboard.scss';
 @import './players.scss';
 @import './mixins.scss';
+@import './modal.scss';
+
+@import url(http://fonts.googleapis.com/css?family=Trebuchet+MS);
+
+
+
+@font-face {
+  font-family: HarryPotter;
+  /* Имя шрифта */
+  src: url("../fonts/hp.ttf");
+  /* Путь к файлу со шрифтом */
+}
+
 body {
-  font-family: 'Times New Roman';
+  font-family:  Sans, 'Sans-serif';
   font-size: 16px;
   background: url("#{$path}/bg.png");
   background-size: cover;
 }
 
-.leftSide,
-.rightSide {
+.leftSide, .rightSide {
   outline: 1px solid green;
 }
 
 .leftSide {
   text-align: center;
+}
+
+@each $color in $playersColors {
+  .#{$color} {
+    color: $color;
+  }
+}
+
+// .big-star, .little-star-1, .little-star-2, .little-star-3, .little-star-4 {
+//   top: $long - 8;
+//   position: absolute;
+//   z-index: 15;
+// }
+.big-star, .little-star {
+  color: #ffc200;
+  font-size: 13px;
+  text-shadow: 1px 1px 0 black;
+}
+
+.little-star-1 {
+  left: 28px;
+}
+
+.little-star-2 {
+  left: 19px;
+}
+
+.little-star-3 {
+  left: 14px;
+}
+
+.little-star-4 {
+  left: 7px;
+}
+
+.big-star {
+  font-size: 12px;
+  top: $long - 13;
+  text-shadow: 1px 1px 0 black;
+  left: $short / 2 - 15;
+  font-size: 24px;
 }

@@ -1,54 +1,107 @@
-  @mixin cardLinePosition ($side, $color: 'empty') {
+  @mixin cardLinePosition ($side, $color: 'empty', $isReverse: '') {
     $deg: 0deg;
     .cardName {
-      display: block;
+      @if $isReverse==true {
+        display: block;
+      }
+      @else {
+        display: flex;
+      }
       position: absolute;
       text-align: center;
       width: 100%;
+      height: 44px;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      span {
+        text-align: center;
+        display: block;
+      }
       @if $side==top or $side==bottom {
         line-height: inherit;
-        bottom: 0;
         $deg: 0deg;
+        @if $isReverse==true {
+          top: 8px;
+        }
+        @else {
+          bottom: 0;
+        }
       }
       @if $side==right {
         width: 85px;
         height: 78px;
-        left: 114px;
-        bottom: 3px;
         $deg: -90deg;
+        @if $isReverse==true {
+          top: 3px;
+          left: 2px;
+        }
+        @else {
+          left: 105px;
+          bottom: 3px;
+        }
       }
       @else if $side==left {
-        width: 50px;
+        width: 85px;
         height: 47px;
-        left: 0px;
-        top: 16px;
         $deg: 90deg;
+        @if $isReverse==true {
+          bottom: 18px;
+          left: 95px;
+        }
+        @else {
+          right: 103px;
+          top: 18px;
+        }
       }
-      display: block;
       transform: rotate($deg);
     }
     .cardLineColor {
       $weight: 30px;
       display: block;
       position: absolute;
+      font-size: 16px;
+      font-weight: bold;
       @if $side==top or $side==bottom {
         line-height: inherit;
         height: $weight;
-        width: $short;
-        top: 0;
+        width: $short - 2;
         $deg: 0deg;
+        @if $isReverse==true {
+          bottom: 6px;
+        }
+        @else {
+          border-bottom: 1px solid black;
+          top: 0;
+        }
       }
       @if $side==right {
         width: $weight;
-        height: $short;
-        left: 0;
-        top: 0;
+        height: $short - 2;
+        @if $isReverse==true {
+          bottom: 0;
+          right: 0;
+        }
+        @else {
+          border-right: 1px solid black;
+          top: 0;
+          left: 0;
+        }
       }
       @else if $side==left {
         width: $weight;
-        height: $short;
-        right: 0;
-        top: 0;
+        height: $short - 2;
+        @if $isReverse==true {
+          bottom: 0;
+          left: 0;
+        }
+        @else {
+          border-left: 1px solid black;
+          right: 0;
+          top: 0;
+        }
       }
       .price {
         line-height: inherit;
@@ -57,7 +110,7 @@
         display: block;
         position: absolute;
         @if $side==top or $side==bottom {
-          top: 5px;
+          top: 3px;
           $deg: 0deg;
         }
         @if $side==right {
@@ -72,26 +125,8 @@
         }
         transform: rotate($deg);
       }
-      @if $color not 'empty' {
-        background: $color;
-      }
-    }
-  }
-
-  @mixin setPlayersPosition($players) {
-    $offset: $long - 10px;
-    @for $i from 1 to $players + 1 {
-      $offset: $offset / 2;
-    }
-    @if $players==1 {
-      $offset: $offset - 5px;
-    }
-    @for $i from 1 to $players + 1 {
-      .players-num-#{$players} {
-        .player-#{$i} {
-          left: $short - ($playerTokenSize / 2);
-          top: ($i * ($offset + $playerTokenSize)) - $playerTokenSize;
-        }
+      @if $color !='empty' {
+        background: rgba(red($color), green($color), blue($color), 0.5);
       }
     }
   }
@@ -100,8 +135,8 @@
     .#{$img}-img {
       background-image: url("#{$path}/#{$img}.png");
       background-repeat: no-repeat;
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       position: absolute;
       z-index: -1;
       @if $isRevers=='revers' {
@@ -114,4 +149,41 @@
         left: $left;
       }
     }
+  }
+
+  @mixin gradient-function($color) {
+    $color1: rgba(red($color), green($color), blue($color), 0);
+    $color2: rgba(red($color), green($color), blue($color), 0.55);
+    background: -moz-linear-gradient(top, $color1 27%, $color1 32%, $color2 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(27%, $color1), color-stop(32%, $color1), color-stop(100%, $color2));
+    /* Chrome, Safari4+ */
+    background: -webkit-linear-gradient(top, $color1 27%, $color1 32%, $color2 100%);
+    /* Chrome10+, Safari5.1+ */
+    background: -o-linear-gradient(top, $color1 27%, $color1 32%, $color2 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $color1 27%, $color1 32%, $color2 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, $color1 27%, $color1 32%, $color2 100%);
+    /* W3C */
+    //filter:progid: DXImageTransform.Microsoft.gradient( startColorstr=argb($color1), endColorstr=argb($color2), GradientType=0 );
+    /* IE6-9 */
+  }
+
+  @each $color in (red, green, blue, yellow, purple) {
+    .gradient-#{$color} {
+      @include gradient-function($color);
+    }
+  }
+
+  @function tarnsparentColor($color, $alpha) {
+    @return rgba(red($color), green($color), blue($color), $alpha);
+  }
+
+  @mixin makeToken($playerTokenSize, $color) {
+    border-radius: $playerTokenSize;
+    width: $playerTokenSize;
+    height: $playerTokenSize;
+    border: 3px solid $color;
+    background: linear-gradient(to right, ($color + #666) 0, ($color - #222) 50%, ($color - #666) 100%);
   }

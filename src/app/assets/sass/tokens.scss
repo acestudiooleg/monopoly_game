@@ -1,0 +1,106 @@
+@mixin leftTopToken($isSquare: false) {
+  @if $isSquare==true {
+    left: $playerTokenSize/2;
+    top: $playerTokenSize/2;
+  }
+  @else {
+    left: 0px;
+    top: 35px;
+  }
+}
+
+@mixin rightTopToken($isSquare: false) {
+  @if $isSquare==true {
+    left: $long - $playerTokenSize - ($playerTokenSize/2);
+    top: $playerTokenSize/2;
+  }
+  @else {
+    left: $short - $playerTokenSize;
+    top: 35px;
+  }
+}
+
+@mixin leftBottomToken($isSquare: false) {
+  @if $isSquare==true {
+    left: $playerTokenSize/2;
+    top: $long - $playerTokenSize - ($playerTokenSize/2);
+  }
+  @else {
+    left: 0px;
+    top: ($playerTokenSize* 2) + 35px;
+  }
+}
+
+@mixin rightBottomToken($isSquare: false) {
+  @if $isSquare==true {
+    left: $long - $playerTokenSize - ($playerTokenSize/2);
+    top: $long - $playerTokenSize - ($playerTokenSize/2);
+  }
+  @else {
+    left: $short - $playerTokenSize;
+    top: ($playerTokenSize* 2) + 35px;
+  }
+}
+
+@mixin centerToken($isSquare: false) {
+  @if $isSquare==true {
+    $l: $long - $playerTokenSize - ($playerTokenSize/2);
+    $s: $playerTokenSize/2;
+    left: ($l /2) + ($s/2);
+    top: ($l/2) + ($s)/2;
+  }
+  @else {
+    $s: 35px;
+    $l: ($playerTokenSize* 2) + 35px;
+    $ht: $playerTokenSize/ 2;
+    left: $playerTokenSize - $ht;
+    top: ($l - $ht) - ($s - $ht) - 5px;
+  }
+}
+
+@for $i from 1 to 6 {
+  @for $j from 1 to 6 {
+    .players-num-#{$i} {
+      .player-#{$j} {
+        transition: 1s ease-in-out;
+        @if $i > 1 and $j==1 {
+          @include leftTopToken();
+        }
+        @if $i > 1 and $j > 1 {
+          @include rightBottomToken();
+        }
+        @if $i > 3 and $j==2 {
+          @include rightTopToken();
+        }
+        @if ($i > 3 and $j==3) or ($i > 4 and $j==4) {
+          @include leftBottomToken();
+        }
+        @if ($i==1 and $j==1) or ($i==3 and $j==2) or ($i==5 and $j==3) {
+          @include centerToken();
+        }
+      }
+    }
+    .players-num-#{$i} {
+      &.square {
+        .player-#{$j} {
+          transition: 1s ease-in-out;
+          @if $i > 1 and $j==1 {
+            @include leftTopToken(true);
+          }
+          @if $i > 1 and $j > 1 {
+            @include rightBottomToken(true);
+          }
+          @if $i > 3 and $j==2 {
+            @include rightTopToken(true);
+          }
+          @if ($i > 3 and $j==3) or ($i > 4 and $j==4) {
+            @include leftBottomToken(true);
+          }
+          @if ($i==1 and $j==1) or ($i==3 and $j==2) or ($i==5 and $j==3) {
+            @include centerToken(true);
+          }
+        }
+      }
+    }
+  }
+}

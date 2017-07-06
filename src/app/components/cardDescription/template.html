@@ -1,0 +1,76 @@
+<div class="cardDesciption">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="logo">
+                    <span v-for="(img, i) in card.images" :class="[img+'-img']"></span>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="description">
+                    <span class="title">"{{card.title}}"</span> - {{card.description}}
+                </div>
+            </div>
+        </div>
+        <div class="prices">
+            <div class="pricebox">
+                <table>
+                    <tr class="title">
+                        <td colspan="2">Цены: </td>
+                    </tr>
+                    <tr>
+                        <td>Начальная стоимость: </td>
+                        <td>{{card.price.start}} G</td>
+                    </tr>
+                    <tr>
+                        <td>Залоговая стоимость: </td>
+                        <td>{{card.price.morgage}} G</td>
+                    </tr>
+                    <tr>
+                        <td>Стоимость выкупа: </td>
+                        <td>{{card.price.buyout}} G</td>
+                    </tr>
+                    <tr>
+                        <td>Стоимость акций: </td>
+                        <td>{{card.price.share}} G</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="profitbox">
+                <table>
+                    <tr class="title">
+                        <td colspan="2">Доходность: </td>
+                    </tr>
+                    <tr>
+                        <td>Базовая: </td>
+                        <td>{{card.income.base}} G</td>
+                    </tr>
+                    <tr>
+                        <td>В монополии: </td>
+                        <td>{{card.income.monopoly}} G</td>
+                    </tr>
+                    <tr>
+                        <td class="little-star">&#9733;</td>
+                        <td>{{card.income.one_star}} G</td>
+                    </tr>
+                    <tr>
+                        <td class="little-star">&#9733;&#9733;</td>
+                        <td>{{card.income.two_star}} G</td>
+                    </tr>
+                    <tr>
+                        <td class="little-star">&#9733;&#9733;&#9733;</td>
+                        <td>{{card.income.three_star}} G</td>
+                    </tr>
+                    <tr>
+                        <td class="little-star">&#9733;&#9733;&#9733;&#9733;</td>
+                        <td>{{card.income.four_star}} G</td>
+                    </tr>
+                    <tr>
+                        <td class="big-star">&#9733;</td>
+                        <td>{{card.income.big_star}} G</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
