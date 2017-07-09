@@ -14,6 +14,7 @@
     width: 100%;
     height: $chatHeight - ($offset*5);
     padding: $offset/2;
+    overflow: auto;
     p {
       text-align: left;
       text-shadow: 1px 1px 1px black;

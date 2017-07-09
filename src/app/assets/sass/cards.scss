@@ -6,8 +6,8 @@
   @include cardImages (start, 40px, 40px);
 }
 
-.pridira {
-  @include cardImages (pridira, 17px, 68px);
+.quibbler {
+  @include cardImages (quibbler, 17px, 68px);
   @include cardLinePosition(top, $colorNewspapers);
 }
 
@@ -32,19 +32,19 @@
   @include cardImages (add_money_v, 13px, 32px);
 }
 
-.grifindor {
+.gryffindor {
   @include cardLinePosition(top, 'empty', true);
-  @include cardImages (grifindor, 13px, 49px);
+  @include cardImages (gryffindor, 13px, 49px);
 }
 
-.wizzard {
+.spells {
   @include cardLinePosition(top, $colorNewspapers);
-  @include cardImages (wizzard, 19px, 27px);
+  @include cardImages (spells, 19px, 27px);
 }
 
-.vredilki {
+.wheezes {
   @include cardLinePosition(top, $colorShops);
-  @include cardImages (vredilki, 15px, 56px);
+  @include cardImages (wheezes, 15px, 56px);
 }
 
 
@@ -58,9 +58,9 @@
   @include cardImages (zonko, 30px, 62px);
 }
 
-.gorben {
+.borgin {
   @include cardLinePosition(top, $colorShops);
-  @include cardImages (gorben, 23px, 63px);
+  @include cardImages (borgin, 23px, 63px);
 }
 
 .azkaban {
@@ -69,9 +69,9 @@
   @include cardImages (dementor, 56px, 16px);
 }
 
-.kingcross {
+.kingscross {
   @include cardLinePosition(left, $colorTransport);
-  @include cardImages (kingcross, 63px, 16px);
+  @include cardImages (kingscross, 63px, 16px);
 }
 
 .give_money_h {
@@ -80,60 +80,60 @@
 }
 
 
-.magic_departament {
+.ministryMagic {
   @include cardLinePosition(right, $colorMinistryMagic);
-  @include cardImages (magic_departament, 66px, 18px);
+  @include cardImages (ministryMagic, 66px, 18px);
 }
 .add_money_h {
   @include cardLinePosition(right, $colorNewspapers);
   @include cardImages (add_money_h, 28px, 13px);
 }
 
-.transgressia {
+.apparition {
   @include cardLinePosition(left, $colorTransport);
-  @include cardImages (transgressia, 52px, 27px);
+  @include cardImages (apparition, 52px, 27px);
 }
 
-.secret_departament {
+.secretDepartament {
   @include cardLinePosition(right, $colorMinistryMagic);
-  @include cardImages (secret_departament, 76px, 22px);
+  @include cardImages (secretDepartament, 76px, 22px);
 }
 
-.pufenduy {
+.hufflepuff {
   @include cardLinePosition(left, 'empty', true);
-  @include cardImages (pufenduy, 51px, 13px);
+  @include cardImages (hufflepuff, 51px, 13px);
 }
 
-.kogtevran {
+.ravenclaw {
   @include cardLinePosition(right, 'empty', true);
-  @include cardImages (kogtevran, 51px, 17px);
+  @include cardImages (ravenclaw, 51px, 17px);
 }
 
-.invisibleCoat {
+.invisibleCloak {
   @include cardLinePosition(left, $colorDeath);
-  @include cardImages (invisibleCoat, 60px, 28px);
+  @include cardImages (invisibleCloak, 60px, 28px);
 }
 
-.square_grimm {
+.grimmauldPlace {
   @include cardLinePosition(right, $colorPlaces);
-  @include cardImages (square_grimm, 50px, 21px);
+  @include cardImages (grimmauldPlace, 50px, 21px);
 }
 
-.stick {
+.elderWand {
   @include cardLinePosition(left, $colorDeath);
-  @include cardImages (stick, 63px, 28px);
+  @include cardImages (elderWand, 63px, 28px);
 }
 
-.kosoy_pereulok {
+.diagonAlley {
   @include cardLinePosition(right, $colorPlaces);
-  @include cardImages (kosoy_pereulok, 56px, 17px);
+  @include cardImages (diagonAlley, 56px, 17px);
 }
 
 .hagrid-square {
   @include cardLinePosition(bottom);
   @include cardImages (hagrid, 28px, 40px);
-  @include cardImages (revers, 109px, 17px);
-  .revers-img {
+  @include cardImages (reverse, 109px, 17px);
+  .reverse-img {
     left: 107px;
     top: inherit;
     bottom: 105px;
@@ -141,14 +141,14 @@
   }
 }
 
-.sharmbautton {
+.beauxbatons {
   @include cardLinePosition(bottom, $colorSchools);
-  @include cardImages (sharmbautton, 20px, 65px);
+  @include cardImages (beauxbatons, 20px, 65px);
 }
 
-.hogvards {
+.hogwarts {
   @include cardLinePosition(bottom, $colorSchools);
-  @include cardImages (hogvards, 11px, 63px);
+  @include cardImages (hogwarts, 11px, 63px);
 }
 
 .durmstrang {
@@ -156,14 +156,14 @@
   @include cardImages (durmstrang, 20px, 65px);
 }
 
-.slizaren {
+.slizerin {
   @include cardLinePosition(bottom, 'empty', true);
-  @include cardImages (slizaren, 13px, 45px);
+  @include cardImages (slizerin, 13px, 45px);
 }
 
-.revers {
+.reverse {
   @include cardLinePosition(bottom);
-  @include cardImages (revers, 22px, 62px);
+  @include cardImages (reverse, 22px, 62px);
 }
 
 .goblet_fire {
@@ -181,7 +181,7 @@
   @include cardImages (stone, 19px, 68px);
 }
 
-.quidich {
+.quidditch {
   @include cardLinePosition(bottom);
-  @include cardImages (quidich, 44px, 25px);
+  @include cardImages (quidditch, 44px, 25px);
 }

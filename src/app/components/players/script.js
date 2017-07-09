@@ -14,7 +14,9 @@ export default {
     return {name: 'players'};
   },
   props: {
-
+    players: {
+      type: Object
+    }
   },
   computed: {
 

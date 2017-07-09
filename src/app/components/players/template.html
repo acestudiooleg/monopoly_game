@@ -1,15 +1,15 @@
 <div class="players">
-    <div class="playerCard">
-        <div class="container-fluid red-player">
+    <div v-for="player in players.list" class="playerCard">
+        <div :class="[player.color + '-player']" class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="photo"><img src="static/avatars/1.gif" alt=""></div>
+                    <div class="photo"><img :src="'static/avatars/' + player.avatar" alt=""></div>
                 </div>
                 <div class="com-md-6">
                     <div class="info">
-                        <div class="playerName">Alex</div>
-                        <div class="wallet">Wallet: $300</div>
-                        <div class="capital">Capital: $1200</div>
+                        <div class="playerName">{{player.name}}</div>
+                        <div class="wallet">Wallet: {{player.wallet}} G</div>
+                        <div class="capital">Capital: {{player.capital}} G</div>
                     </div>
                 </div>
             </div>
@@ -17,112 +17,8 @@
                 <div class="col-md-12">
                     <div class="playerTime">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width: 60%;">
-                                40 sec
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="playerCard">
-        <div class="container-fluid green-player">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="photo"><img src="static/avatars/2.gif" alt=""></div>
-                </div>
-                <div class="com-md-6">
-                    <div class="info">
-                        <div class="playerName">Genry</div>
-                        <div class="wallet">Wallet: $200</div>
-                        <div class="capital">Capital: $1200</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="playerTime">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="playerCard">
-        <div class="container-fluid blue-player">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="photo"><img src="static/avatars/3.gif" alt=""></div>
-                </div>
-                <div class="com-md-6">
-                    <div class="info">
-                        <div class="playerName">Miha</div>
-                        <div class="wallet">Wallet: $700</div>
-                        <div class="capital">Capital: $1200</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="playerTime">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="playerCard">
-        <div class="container-fluid yellow-player">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="photo"><img src="static/avatars/4.gif" alt=""></div>
-                </div>
-                <div class="com-md-6">
-                    <div class="info">
-                        <div class="playerName">Roma</div>
-                        <div class="wallet">Wallet: $300</div>
-                        <div class="capital">Capital: $1200</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="playerTime">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="playerCard">
-        <div class="container-fluid purple-player">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="photo"><img src="static/avatars/5.gif" alt=""></div>
-                </div>
-                <div class="com-md-6">
-                    <div class="info">
-                        <div class="playerName">Roma</div>
-                        <div class="wallet">Wallet: $300</div>
-                        <div class="capital">Capital: $1200</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="playerTime">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%;">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" :style="{width: player.timePercent +'%'}">
+                                {{player.isActive ? player.timeout +' sec' : ''}}
                             </div>
                         </div>
                     </div>

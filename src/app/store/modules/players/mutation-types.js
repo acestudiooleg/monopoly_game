@@ -1,0 +1,38 @@
+/* ============
+ * Mutation types for the players module
+ * ============
+ */
+
+export const ADD_PLAYER = 'ADD_PLAYER';
+export const REMOVE_PLAYER = 'REMOVE_PLAYER';
+export const EDIT_PLAYER = 'EDIT_PLAYER';
+export const SET_PLAYER_ACTIVE = 'SET_PLAYER_ACTIVE';
+export const NEXT_PLAYER = 'NEXT_PLAYER';
+export const MOVE_PLAYER = 'MOVE_PLAYER';
+export const ADD_PLAYER_PROPERTY = 'ADD_PLAYER_PROPERTY';
+export const REMOVE_PLAYER_PROPERTY = 'REMOVE_PLAYER_PROPERTY';
+export const GIVE_MONEY = 'GIVE_MONEY';
+export const TAKE_MONEY = 'TAKE_MONEY';
+export const SET_REVERSE = 'SET_REVERSE';
+export const SET_DOUBLE = 'SET_DOUBLE';
+export const MINUS_SECOND = 'MINUS_SECOND';
+export const RESET_TIMEOUT = 'RESET_TIMEOUT';
+export const SET_STATE = 'SET_STATE';
+
+export default {
+  ADD_PLAYER,
+  REMOVE_PLAYER,
+  EDIT_PLAYER,
+  SET_PLAYER_ACTIVE,
+  NEXT_PLAYER,
+  MOVE_PLAYER,
+  ADD_PLAYER_PROPERTY,
+  REMOVE_PLAYER_PROPERTY,
+  GIVE_MONEY,
+  TAKE_MONEY,
+  SET_REVERSE,
+  SET_DOUBLE,
+  MINUS_SECOND,
+  RESET_TIMEOUT,
+  SET_STATE,
+};

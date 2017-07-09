@@ -2,85 +2,69 @@
     <div class="row">
         <div class="col-md-10 leftSide">
             <div class="gameBoard">
-              <v-card-description></v-card-description>
+                <v-card-description></v-card-description>
+                <div v-for="(player, i) in players.list" :class="['player-'+(i+1),'position-'+player.position, player.color + '-token']" class="playerToken"></div>
                 <div class="topSide">
-                    <div v-for="(card, index) in topCards" :class="[card.class, index==0? 'square' : '']" class="col players-num-3 gradient-green">
-                        <div class="player-1 playerToken red-token"></div>
-                        <div class="player-2 playerToken green-token"></div>
-                        <div class="player-3 playerToken blue-token"></div>
-                        <div class="player-4 playerToken yellow-token"></div>
-                        <div class="player-5 playerToken purple-token"></div>
+                    <div v-for="(card, index) in board" v-if="index >= 0 && index < 13" :class="[card.class, owner(card), playersCountOnField(card), 'id-'+card.id]" class="col">
                         <span v-for="(img, i) in card.images" :class="[img+'-img']"></span>
                         <span v-if="card.price" class="cardLineColor">
                           <span class="price">{{card.price}} G</span>
                         </span>
                         <div v-if="!card.isHideName" class="cardName">
-                            <span>{{card.name}}</span></div>
+                            <span>{{card.title}}</span></div>
                     </div>
                 </div>
                 <div class="ro">
                     <div class="leftSide">
-                        <div v-for="(card, index) in leftCards" :class="[card.class]" class="col players-num-4">
-                            <div class="player-1 playerToken red-token"></div>
-                            <div class="player-2 playerToken green-token"></div>
-                            <div class="player-3 playerToken blue-token"></div>
-                            <div class="player-4 playerToken yellow-token"></div>
+                        <div v-for="(card, index) in board" v-if="index >= 32 && index < 38" :class="[card.class, owner(card), playersCountOnField(card), 'id-'+card.id]" class="col">
                             <span v-for="(img, i) in card.images" :class="[img+'-img']"></span>
                             <span v-if="card.price" class="cardLineColor">
                               <span class="price">{{card.price}} G</span>
                             </span>
                             <div v-if="!card.isHideName" class="cardName">
-                                <span>{{card.name}}</span></div>
+                                <span>{{card.title}}</span></div>
                         </div>
                     </div>
                     <div class="centralSide">
                         <div class="centralBackground"></div>
-                        <v-chat></v-chat>
+                        <v-chat :chat="chat"></v-chat>
                         <div class="gameButtons">
-                          <div class="button"><span class="button-green">Бросить Кубики</span></div>
-                          <div class="button"><span class="button-yellow">Заключить договор</span></div>
-                          <div class="button"><span>Построить</span></div>
-                          <div class="button"><span>Продать</span></div>
-                          <div class="button"><span>Заложить</span></div>
-                          <div class="button"><span>Выкупить</span></div>
-                          <div class="button"><span class="button-orangered">Взять кредит</span></div>
-                          <div class="button"><span class="button-red">Сдаться</span></div>
+                            <div @click="throwDices()" v-if="currentPlayer.state === 1" class="button"><span class="button-green">Бросить Кубики</span></div>
+                            <div @click="buyFirm()" v-if="currentPlayer.state === 2" class="button"><span class="button-green">Купить</span></div>
+                            <!-- <div @click="buyFirm()" v-if="currentPlayer.state === 2" class="button"><span>Выкупить</span></div> -->
+                          <!--   <div class="button"><span class="button-yellow">Заключить договор</span></div> -->
+<!--                             <div class="button"><span>Построить</span></div>
+                            <div class="button"><span>Продать</span></div>
+                            <div class="button"><span>Заложить</span></div>
+                            <div class="button"><span class="button-orangered">Взять кредит</span></div>
+                            <div class="button"><span class="button-red">Сдаться</span></div> -->
                         </div>
-
                     </div>
                     <div class="rightSide">
-                        <div v-for="(card, index) in rightCards" :class="[card.class]" class="col players-num-4">
-                            <!-- <div v-if="index == 0" class="player-1 playerToken red-token"></div>
-                            <div v-if="index == 0" class="player-2 playerToken green-token"></div>
-                            <div v-if="index == 0" class="player-3 playerToken blue-token"></div>
-                            <div v-if="index == 0" class="player-4 playerToken yellow-token"></div> -->
+                        <div v-for="(card, index) in board" v-if="index >= 13 && index < 19" :class="[card.class, owner(card), playersCountOnField(card), 'id-'+card.id]" class="col">
                             <span v-for="(img, i) in card.images" :class="[img+'-img']"></span>
                             <span v-if="card.price" class="cardLineColor">
                               <span class="price">{{card.price}} G</span>
                             </span>
                             <div v-if="!card.isHideName" class="cardName">
-                                <span>{{card.name}}</span></div>
+                                <span>{{card.title}}</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="bottomSide">
-                    <div v-for="(card, index) in bottomCards" :class="[card.class]" class="col players-num-4">
-                        <!--  <div v-if="index == 0" class="player-1 playerToken red-token"></div>
-                        <div v-if="index == 0" class="player-2 playerToken green-token"></div>
-                        <div v-if="index == 0" class="player-3 playerToken blue-token"></div>
-                        <div v-if="index == 0" class="player-4 playerToken yellow-token"></div> -->
+                    <div v-for="(card, index) in board" v-if="index >= 19 && index < 32" :class="[card.class, owner(card), playersCountOnField(card), 'id-'+card.id]" class="col">
                         <span v-for="(img, i) in card.images" :class="[img+'-img']"></span>
                         <span v-if="card.price" class="cardLineColor">
                           <span class="price">{{card.price}} G</span>
                         </span>
                         <div v-if="!card.isHideName" class="cardName">
-                            <span>{{card.name}}</span></div>
+                            <span>{{card.title}}</span></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-2 rightSide">
-        <v-players></v-players>
+            <v-players :players="players" />
         </div>
     </div>
 </div>

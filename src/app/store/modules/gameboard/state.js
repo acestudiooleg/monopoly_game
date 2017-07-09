@@ -3,6 +3,7 @@
  * ============
  */
 
+import { find } from 'lodash/fp';
 
 const makeBoard = (board) => {
   board.forEach((card) => {
@@ -23,16 +24,18 @@ const makeBoard = (board) => {
       card.roundNumberFromPleged = 0;
     }
   });
+  return board;
 };
 
 const hat = {
   id: 3,
   title: 'Hat',
   description: 'Hat',
-  type: 'firm',
+  type: 'hat',
   name: 'hat',
   class: 'hat',
   images: ['hat'],
+  places: [6, 34, 25, 16],
   skillId: 1,
   skillDescriptions: 'Рандомно перебрасывает по полю'
 };
@@ -73,22 +76,22 @@ const moneyPlusV27 = {
 
 const moneyMinusV9 = {
   id: 9,
-  title: 'Ущерб',
-  description: 'Ущерб',
-  type: 'Ущерб',
-  name: 'Ущерб',
-  value: -200,
+  title: 'Tax',
+  description: 'Tax',
+  type: 'Tax',
+  name: 'Tax',
+  value: 200,
   class: 'give_money_v',
   images: ['give_money_v']
 };
 
 const moneyMinusV22 = {
   id: 22,
-  title: 'Ущерб',
-  description: 'Ущерб',
-  type: 'Ущерб',
-  name: 'Ущерб',
-  value: -100,
+  title: 'Tax',
+  description: 'Tax',
+  type: 'Tax',
+  name: 'Tax',
+  value: 100,
   class: 'give_money_v',
   images: ['give_money_v']
 };
@@ -100,7 +103,7 @@ const moneyMinusH36 = {
   description: 'Tax',
   type: 'tax',
   name: 'tax',
-  value: -300,
+  value: 300,
   class: 'give_money_h',
   images: ['give_money_h']
 };
@@ -129,14 +132,14 @@ const spells26 = {
 };
 
 
-const revers = {
+const reverse = {
   id: 24,
-  title: 'Реверс',
-  description: 'Реверс',
-  type: 'Реверс',
-  name: 'Реверс',
-  class: 'revers',
-  images: ['revers'],
+  title: 'Reverse',
+  description: 'Reverse',
+  type: 'Reverse',
+  name: 'Reverse',
+  class: 'reverse',
+  images: ['reverse'],
   skillId: 3
 };
 
@@ -147,10 +150,9 @@ const start = {
   description: 'Start',
   type: 'start',
   name: 'start',
-  class: 'start',
+  class: 'start square',
   images: ['start'],
   value: 400,
-  square: true,
   skillId: 0
 };
 
@@ -161,37 +163,34 @@ const azkaban = {
   description: 'Azkaban',
   type: 'azkaban',
   name: 'azkaban',
-  class: 'azkaban',
-  value: -300,
+  class: 'azkaban square',
+  value: 300,
   images: ['dementor', 'azkaban'],
-  square: true,
   skillId: 0
 };
 
 const hagrid = {
   id: 31,
   isHideName: true,
-  title: 'Хагрид',
-  description: 'Хагрид',
-  type: 'Хагрид',
-  name: 'Хагрид',
-  class: 'hagrid-square',
+  title: 'Hagrid',
+  description: 'Hagrid',
+  type: 'hagrid',
+  name: 'hagrid',
+  class: 'hagrid-square square',
   goto: 0,
-  images: ['revers', 'hagrid'],
-  square: true,
+  images: ['reverse', 'hagrid'],
   skillId: 0
 };
 
-const quidich = {
+const quidditch = {
   id: 19,
-  title: 'Квидич',
-  description: 'Квидич',
-  type: 'Квидич',
-  name: 'Квидич',
-  class: 'quidich',
+  title: 'quidditch',
+  description: 'quidditch',
+  type: 'quidditch',
+  name: 'quidditch',
+  class: 'quidditch square',
   value: 300,
-  images: ['quidich'],
-  square: true,
+  images: ['quidditch'],
   skillId: 0
 };
 
@@ -213,9 +212,9 @@ const quibbler = {
 
 const today = {
   id: 2,
-  title: 'Transfiguration Today',
+  title: 'Today',
   description: 'Transfiguration Today',
-  type: 'Firm',
+  type: 'firm',
   name: 'today',
   class: 'today',
   images: ['today'],
@@ -226,7 +225,7 @@ const today = {
 
 const prophet = {
   id: 4,
-  title: 'Dayly Prophet',
+  title: 'Prophet',
   description: 'Dayly Prophet',
   type: 'firm',
   name: 'prophet',
@@ -242,7 +241,7 @@ const gryffindor = {
   id: 6,
   title: 'Gryffindor',
   description: 'gryffindor',
-  type: 'ашкь',
+  type: 'firm',
   name: 'gryffindor',
   class: 'gryffindor',
   monopolyId: 2,
@@ -251,40 +250,40 @@ const gryffindor = {
   skillId: 0
 };
 
-const pufenduy = {
+const hufflepuff = {
   id: 34,
-  title: 'Пуфендуй',
-  description: 'Пуфендуй',
-  type: 'Пуфендуй',
-  name: 'Пуфендуй',
-  class: 'pufenduy',
-  images: ['pufenduy'],
+  title: 'Hufflepuff',
+  description: 'Hufflepuff',
+  type: 'firm',
+  name: 'hufflepuff',
+  class: 'hufflepuff',
+  images: ['hufflepuff'],
   monopolyId: 2,
   price: 500,
   skillId: 0
 };
 
-const kogtevran = {
+const ravenclaw = {
   id: 16,
-  title: 'Когтевран',
-  description: 'Когтевран',
-  type: 'Когтевран',
-  name: 'Когтевран',
-  class: 'kogtevran',
-  images: ['kogtevran'],
+  title: 'Ravenclaw',
+  description: 'Ravenclaw',
+  type: 'firm',
+  name: 'ravenclaw',
+  class: 'ravenclaw',
+  images: ['ravenclaw'],
   monopolyId: 2,
   price: 500,
   skillId: 0
 };
 
-const slizaren = {
+const slizerin = {
   id: 25,
-  title: 'Слизарен',
-  description: 'Слизарен',
-  type: 'Слизарен',
-  name: 'Слизарен',
-  class: 'slizaren',
-  images: ['slizaren'],
+  title: 'Slizerin',
+  description: 'Slizerin',
+  type: 'firm',
+  name: 'slizerin',
+  class: 'slizerin',
+  images: ['slizerin'],
   monopolyId: 2,
   price: 600,
   skillId: 0
@@ -294,7 +293,7 @@ const slizaren = {
 // ======SHOPS========
 const wheezes = {
   id: 8,
-  title: 'Weasleys\' Wizard Wheezes',
+  title: 'Wheezes',
   description: 'Weasleys\' Wizard Wheezes',
   type: 'firm',
   name: 'wheezes',
@@ -318,15 +317,15 @@ const zonko = {
   skillId: 0
 };
 
-const gorbin = {
+const borgin = {
   id: 11,
   title: 'Borgin and Burkes',
   description: 'Borgin and Burkes',
   type: 'firm',
-  name: 'gorbin',
-  class: 'gorbin',
+  name: 'borgin',
+  class: 'borgin',
   stars: 2,
-  images: ['gorbin'],
+  images: ['borgin'],
   monopolyId: 3,
   price: 300,
   skillId: 0
@@ -334,9 +333,9 @@ const gorbin = {
 
 
 // ======TRANSPORT======
-const kingCross = {
+const kingsCross = {
   id: 37,
-  title: 'Kings cross',
+  title: 'Kingscross',
   description: 'Kings cross',
   type: 'firm',
   name: 'kingscross',
@@ -378,12 +377,12 @@ const ministryMagic = {
 
 const secretDepartament = {
   id: 15,
-  title: 'Отдел тайн',
-  description: 'Отдел тайн',
-  type: 'Отдел тайн',
-  name: 'Отдел тайн',
-  class: 'secret_departament',
-  images: ['secret_departament'],
+  title: 'Secret depart.',
+  description: 'Secret departament',
+  type: 'firm',
+  name: 'secretDepartament',
+  class: 'secretDepartament',
+  images: ['secretDepartament'],
   monopolyId: 5,
   price: 350,
   skillId: 4,
@@ -391,28 +390,28 @@ const secretDepartament = {
 
 
 // ======DEATH GIFTS======
-const invisible = {
+const invisibleCloak = {
   id: 33,
-  title: 'Мантия невидимка',
-  description: 'Мантия невидимка',
-  type: 'Мантия невидимка',
-  name: 'Мантия невидимка',
-  class: 'invisibleCoat',
-  images: ['invisibleCoat'],
+  title: 'Invisible Cloak',
+  description: 'Invisible Cloak',
+  type: 'firm',
+  name: 'Invisible Cloak',
+  class: 'invisibleCloak',
+  images: ['invisibleCloak'],
   monopolyId: 6,
   price: 800,
   skillId: 5,
   skillDescriptions: 'Все владения и стоимость исчезает с карты до хода игрока, в этот период ничего нельзя купить, продать или обменять, однако можна получать доход или расход от владений'
 };
 
-const stick = {
+const elderWand = {
   id: 32,
-  title: 'Старшая палочка',
-  description: 'Старшая палочка',
-  type: 'Старшая палочка',
-  name: 'Старшая палочка',
-  class: 'stick',
-  images: ['stick'],
+  title: 'Elder Wand',
+  description: 'Elder Wand',
+  type: 'firm',
+  name: 'Elder Wand',
+  class: 'elderWand',
+  images: ['elderWand'],
   monopolyId: 6,
   price: 500,
   skillId: 6,
@@ -420,27 +419,27 @@ const stick = {
 };
 
 // ======STREETS======
-const grimm = {
+const grimmauldPlace = {
   id: 17,
-  title: 'Площадь Гримма',
-  description: 'Площадь Гримма',
-  type: 'Площадь Гримма',
-  name: 'Площадь Гримма',
-  class: 'square_grimm',
-  images: ['square_grimm'],
+  title: 'Grimmauld Place',
+  description: 'Grimmauld Place',
+  type: 'firm',
+  name: 'Grimmauld Place',
+  class: 'grimmauldPlace',
+  images: ['grimmauldPlace'],
   monopolyId: 7,
   price: 450,
   skillId: 0
 };
 
-const kosoy = {
+const diagonAlley = {
   id: 18,
-  title: 'Косой переулок',
-  description: 'Косой переулок',
-  type: 'Косой переулок',
-  name: 'Косой переулок',
-  class: 'kosoy_pereulok',
-  images: ['kosoy_pereulok'],
+  title: 'Diagon Alley',
+  description: 'Diagon Alley',
+  type: 'firm',
+  name: 'Diagon Alley',
+  class: 'diagonAlley',
+  images: ['diagonAlley'],
   monopolyId: 7,
   price: 800,
   goto: 8,
@@ -448,27 +447,27 @@ const kosoy = {
 };
 
 // ======SCHOOLS======
-const sharmbatton = {
+const beauxbatons = {
   id: 30,
-  title: 'Шарм баттон',
-  description: 'Шарм баттон',
-  type: 'Шарм баттон',
-  name: 'Шарм баттон',
-  class: 'sharmbautton',
-  images: ['sharmbautton'],
+  title: 'Beaux batons',
+  description: 'Beauxbatons',
+  type: 'firm',
+  name: 'Beauxbatons',
+  class: 'beauxbatons',
+  images: ['beauxbatons'],
   monopolyId: 8,
   price: 700,
   skillId: 0
 };
 
-const hogvarts = {
-  id: 27,
-  title: 'Хогвартс',
-  description: 'Хогвартс',
-  type: 'Хогвартс',
-  name: 'Хогвартс',
-  class: 'hogvards',
-  images: ['hogvards'],
+const hogwarts = {
+  id: 29,
+  title: 'Hogwarts',
+  description: 'Hogwarts',
+  type: 'firm',
+  name: 'hogwarts',
+  class: 'hogwarts',
+  images: ['hogwarts'],
   monopolyId: 8,
   price: 650,
   skillId: 0
@@ -476,10 +475,10 @@ const hogvarts = {
 
 const durmstrang = {
   id: 28,
-  title: 'Дурм странг',
-  description: 'Дурм странг',
-  type: 'Дурм странг',
-  name: 'Дурм странг',
+  title: 'Durm strang',
+  description: 'Furmstrang',
+  type: 'firm',
+  name: 'durmstrang',
   class: 'durmstrang',
   images: ['durmstrang'],
   monopolyId: 8,
@@ -490,10 +489,10 @@ const durmstrang = {
 // ======ARTIFACTS======
 const gobletFire = {
   id: 23,
-  title: 'Кубок огня',
-  description: 'Кубок огня',
-  type: 'Кубок огня',
-  name: 'Кубок огня',
+  title: 'Goblet of fire',
+  description: 'Goblet of fire',
+  type: 'firm',
+  name: 'Goblet of fire',
   class: 'goblet_fire',
   images: ['goblet_fire'],
   monopolyId: 9,
@@ -503,10 +502,10 @@ const gobletFire = {
 
 const sword = {
   id: 21,
-  title: 'Меч грифинд.',
-  description: 'Меч грифинд.',
-  type: 'Меч грифинд.',
-  name: 'Меч грифинд.',
+  title: 'Sword of Gryffindor',
+  description: 'Sword of Gryffindor',
+  type: 'firm',
+  name: 'Sword of Gryffindor',
   class: 'sword',
   images: ['sword'],
   monopolyId: 9,
@@ -515,10 +514,10 @@ const sword = {
 
 const stone = {
   id: 20,
-  title: 'Философ. камень',
-  description: 'Философ. камень',
-  type: 'Философ. камень',
-  name: 'Философ. камень',
+  title: 'Philosoph. Stone',
+  description: 'Philosopher\'s Stone',
+  type: 'firm',
+  name: 'Philosopher\'s Stone',
   class: 'stone',
   images: ['stone'],
   monopolyId: 9,
@@ -538,49 +537,50 @@ const topCards = [
   wheezes, // 8
   moneyMinusV9, // 9
   zonko, // 10
-  gorbin, // 11
+  borgin, // 11
   azkaban // 12
 ];
 const leftCards = [
-  kingCross, // 37
+  kingsCross, // 37
   moneyMinusH36, // 36
   apparition, // 35
-  pufenduy, // 34
-  invisible, // 33
-  stick // 32
+  hufflepuff, // 34
+  invisibleCloak, // 33
+  elderWand // 32
 ];
 const rightCards = [
   ministryMagic, // 13
   moneyPlusH14, // 14
   secretDepartament, // 15
-  kogtevran, // 16
-  grimm, // 17
-  kosoy // 18
+  ravenclaw, // 16
+  grimmauldPlace, // 17
+  diagonAlley // 18
 ];
 
 
 const bottomCards = [
   hagrid, // 31
-  sharmbatton, // 30
-  hogvarts, // 29
+  beauxbatons, // 30
+  hogwarts, // 29
   durmstrang, // 28
   moneyPlusV27, // 27
   spells26, // 26
-  slizaren, // 25
-  revers, // 24
+  slizerin, // 25
+  reverse, // 24
   gobletFire, // 23
   moneyMinusV22, // 22
   sword, // 21
   stone, // 20
-  quidich // 19
+  quidditch // 19
 ];
 
-const board = makeBoard(topCards.concat(rightCards, bottomCards, rightCards));
+const board = makeBoard(topCards.concat(rightCards, bottomCards, leftCards));
 
 export default {
   topCards,
   leftCards,
   rightCards,
   bottomCards,
-  board
+  board,
+  getCard: id => find({id})(board)
 };

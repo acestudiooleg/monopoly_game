@@ -5,12 +5,20 @@
 @import './tokens.scss';
 .gameBoard {
   display: inline-block;
+  position: relative;
   @each $name, $color in $playersColors {
     .#{$name}-token {
-     @include makeToken($playerTokenSize, $color);
+      @include makeToken($playerTokenSize, $color);
     }
   }
-
+  @each $name, $color in $playersColors {
+    .player-#{$name} {
+      color: $color;
+    }
+  }
+  .player-game{
+    color: orangered;
+  }
   .playerToken {
     position: absolute;
   }

@@ -4,7 +4,8 @@
  */
 
 export const STORE = 'STORE';
+export const BUY_FIRM = 'BUY_FIRM';
 
 export default {
-  STORE,
+  BUY_FIRM,
 };

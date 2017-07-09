@@ -58,49 +58,124 @@
   }
 }
 
-@for $i from 1 to 6 {
-  @for $j from 1 to 6 {
-    .players-num-#{$i} {
-      .player-#{$j} {
-        transition: 1s ease-in-out;
-        @if $i > 1 and $j==1 {
-          @include leftTopToken();
-        }
-        @if $i > 1 and $j > 1 {
-          @include rightBottomToken();
-        }
-        @if $i > 3 and $j==2 {
-          @include rightTopToken();
-        }
-        @if ($i > 3 and $j==3) or ($i > 4 and $j==4) {
-          @include leftBottomToken();
-        }
-        @if ($i==1 and $j==1) or ($i==3 and $j==2) or ($i==5 and $j==3) {
-          @include centerToken();
-        }
+// @for $i from 1 to 6 {
+//   @for $j from 1 to 6 {
+//     .players-num-#{$i} {
+//       .player-#{$j} {
+//         transition: 1s ease-in-out;
+//         @include centerToken();
+//         // @if $i > 1 and $j==1 {
+//         //   @include leftTopToken();
+//         // }
+//         // @if $i > 1 and $j > 1 {
+//         //   @include rightBottomToken();
+//         // }
+//         // @if $i > 3 and $j==2 {
+//         //   @include rightTopToken();
+//         // }
+//         // @if ($i > 3 and $j==3) or ($i > 4 and $j==4) {
+//         //   @include leftBottomToken();
+//         // }
+//         // @if ($i==1 and $j==1) or ($i==3 and $j==2) or ($i==5 and $j==3) {
+//         //   @include centerToken();
+//         // }
+//       }
+//     }
+//     .players-num-#{$i} {
+//       &.start{}
+//       &.square {
+//         .player-#{$j} {
+//           transition: 1s ease-in-out;
+//           @include centerToken(true);
+//           display: none;
+//           // }
+//           // @if $i > 1 and $j==1 {
+//           //   @include leftTopToken(true);
+//           // }
+//           // @if $i > 1 and $j > 1 {
+//           //   @include rightBottomToken(true);
+//           // }
+//           // @if $i > 3 and $j==2 {
+//           //   @include rightTopToken(true);
+//           // }
+//           // @if ($i > 3 and $j==3) or ($i > 4 and $j==4) {
+//           //   @include leftBottomToken(true);
+//           // }
+//           // @if ($i==1 and $j==1) or ($i==3 and $j==2) or ($i==5 and $j==3) {
+//           //   @include centerToken(true);
+//           // }
+//         }
+//       }
+//     }
+//   }
+// }
+// .start {
+//   .playerToken {
+//     display: block;
+//   }
+// }
+@for $i from 0 to 38 {
+  .position-#{$i} {
+    $halfToken: ($playerTokenSize/2);
+    $halfLong: ($long/2);
+    $halfShort: ($short/2);
+    $c: $i + 1;
+    $leftTopX: $halfLong - $halfToken;
+    $leftTopY: $halfLong - $halfToken;
+    $rightTopX: (13 * $short) + $halfLong - $halfToken;
+    $rightTopY: $halfLong - $halfToken;
+    $rightBottomX: $rightTopX;
+    $rightBottomY: $leftTopY + ($short * 6) + $long;
+    $leftBottomX: $halfLong - $halfToken;
+    $leftBottomY: $leftTopY + ($short * 6) + $long;
+    @for $player from 1 to 6 {
+      $offset: 5;
+      $o: 3;
+      @if $player%2==0 {
+        $offset: ($player * ($o * -1)) + $o;
       }
-    }
-    .players-num-#{$i} {
-      &.square {
-        .player-#{$j} {
-          transition: 1s ease-in-out;
-          @if $i > 1 and $j==1 {
-            @include leftTopToken(true);
-          }
-          @if $i > 1 and $j > 1 {
-            @include rightBottomToken(true);
-          }
-          @if $i > 3 and $j==2 {
-            @include rightTopToken(true);
-          }
-          @if ($i > 3 and $j==3) or ($i > 4 and $j==4) {
-            @include leftBottomToken(true);
-          }
-          @if ($i==1 and $j==1) or ($i==3 and $j==2) or ($i==5 and $j==3) {
-            @include centerToken(true);
-          }
+      @else {
+        $offset: ($player * $o) - $o;
+      }
+      &.player-#{$player} {
+        transition: 1s ease-in-out;
+        @if $i==0 {
+          left: $leftTopX + $offset;
+          top: $leftTopY + $offset;
+        }
+        @else if $i < 12 {
+          left: ($c * $short) - $halfShort - $halfToken + $short + $offset;
+          top: $halfLong - $halfToken + $offset;
+        }
+        @else if $i==12 {
+          left: $rightTopX + $offset;
+          top: $rightTopY + $offset;
+        }
+        @else if $i > 12 and $i < 19 {
+          left: $rightTopX + $offset;
+          top: (($c - 12) * $short) - ($short/2) - ($playerTokenSize/2) + $short + $offset;
+        }
+        @else if $i==19 {
+          left: $rightBottomX + $offset;
+          top: $rightBottomY + $offset;
+        }
+        @else if $i > 19 and $i < 32 {
+          left: ((((($c - 3) * -1) + 19 + 12)) * $short) - $halfShort - $halfToken + $offset;
+          top: $rightBottomY + $offset;
+        }
+        @else if $i==32 {
+          left: $leftBottomX + $offset;
+          top: $leftBottomY + $offset;
+        }
+        @else if $i > 32 and $i < 39 {
+          left: $leftBottomX + $offset;
+          top: ((((($c - 4) * -1) + 32 + 6)) * $short) - $short - ($short/2) - ($playerTokenSize/2) + $offset;
         }
       }
     }
   }
 }
+
+//1 - 20
+//2 - 19
+//3 - 18

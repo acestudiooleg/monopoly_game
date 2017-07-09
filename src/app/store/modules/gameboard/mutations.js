@@ -3,12 +3,10 @@
  * ============
  */
 
-import { STORE } from './mutation-types';
+import { BUY_FIRM } from './mutation-types';
+import { creaceMethodChangeItemInList } from '@/utils/pureMutation';
 
-export default {
-  [STORE](state, account) {
-    state.email = account.email;
-    state.firstName = account.firstName;
-    state.lastName = account.lastName;
-  },
-};
+const changeItemInList = creaceMethodChangeItemInList('board');
+export default [
+  [BUY_FIRM, changeItemInList((_, { playerId: ownerId }) => ({ ownerId }))]
+];

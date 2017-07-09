@@ -18,13 +18,13 @@ const card = {
     share: 100 // start/3 * 4
   },
   income: {
-    base: 5,
-    monopoly: 10,
-    one_star: 25,
-    two_star: 75,
-    three_star: 225,
-    four_star: 400,
-    big_star: 625
+    base: 8, // start / 20
+    monopoly: 16, // start /10
+    one_star: 32, // start / 5
+    two_star: 80, // start / 2
+    three_star: 150, // start
+    four_star: 300, // start * 2
+    big_star: 600 // start * 4
   }
 };
 
