@@ -51,7 +51,7 @@ export const setReverse = ({ commit }, { id }) => {
 };
 
 export const removeReverse = ({ commit }, { id }) => {
-  commit(SET_REVERSE, { id, value: true });
+  commit(SET_REVERSE, { id, value: false });
 };
 
 export const setDouble = ({ commit }, { id }) => {

@@ -11,7 +11,6 @@ import VPlayers from '@/components/players';
 
 import { mapState, mapGetters } from 'vuex';
 import { find, filter } from 'lodash/fp';
-import { runTimer, stopTimer } from '@/utils/timer';
 import { rollDice} from '@/utils/dice';
 
 
@@ -30,6 +29,7 @@ export default {
       bottomCards: state => state.gameboard.bottomCards,
       board: state => state.gameboard.board,
       players: state => state.players,
+      timer: state => state.game.timer,
       chat: state => state.chat
     })
   },

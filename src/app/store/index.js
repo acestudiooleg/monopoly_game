@@ -10,7 +10,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import pureMutation from '@/utils/pureMutation';
-// import createLogger from 'vuex/dist/logger';
+import createLogger from 'vuex/dist/logger';
 
 // Modules
 import players from './modules/players';
@@ -47,5 +47,5 @@ export default new Vuex.Store({
   /**
    * Plugins used in the store
    */
-  //  plugins: debug ? [createLogger()] : [],
+  plugins: debug ? [createLogger()] : [],
 });

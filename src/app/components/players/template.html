@@ -17,8 +17,8 @@
                 <div class="col-md-12">
                     <div class="playerTime">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" :style="{width: player.timePercent +'%'}">
-                                {{player.isActive ? player.timeout +' sec' : ''}}
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" :style="{width: showTimeline(player) + '%'}">
+                                {{showCounter(player)}}
                             </div>
                         </div>
                     </div>

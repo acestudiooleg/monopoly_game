@@ -1,18 +1,15 @@
-const timer = {};
-import store from '@/store';
-
-
-export const runTimer = (id) => {
-  timer[id] = setInterval(() => {
-    store.dispatch('players/minusSecond', id);
-  }, 1000);
+const timer = {
+  clock: null
 };
 
-export const stopTimer = (id) => {
-  if (timer[id]) {
-    clearInterval(timer[id]);
+export const runTimer = (callback) => {
+  timer.clock = setInterval(callback, 1000);
+};
+
+export const stopTimer = () => {
+  if (timer.clock) {
+    clearInterval(timer.clock);
   }
-  store.dispatch('players/resetTimeout', id);
 };
 
 export default {

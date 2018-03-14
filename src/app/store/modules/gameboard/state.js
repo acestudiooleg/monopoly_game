@@ -136,7 +136,7 @@ const reverse = {
   id: 24,
   title: 'Reverse',
   description: 'Reverse',
-  type: 'Reverse',
+  type: 'reverse',
   name: 'Reverse',
   class: 'reverse',
   images: ['reverse'],

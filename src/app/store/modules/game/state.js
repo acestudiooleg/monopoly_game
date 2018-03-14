@@ -4,7 +4,10 @@
  */
 
 export default {
-  email: null,
+  timer: {
+    time: null,
+    playerId: null
+  },
   firstName: null,
   lastName: null,
 };
